@@ -31,11 +31,8 @@ def search():
         # search by author or book
         cursor.execute("SELECT name, author from Book WHERE (name LIKE %s OR author LIKE %s) AND (name LIKE %s OR author LIKE %s)" , (book1, book1, book1, book1))
         conn.commit()
-
-        
-        #cursor.execute("SELECT name, author from Book WHERE name LIKE %s OR author LIKE %s", (book1, book1))        
-        #conn.commit()
         data = cursor.fetchall()
+
         # all in the search box will return all the tuples
         if len(data) == 0 and book == 'all': 
             cursor.execute("SELECT name, author from Book")
